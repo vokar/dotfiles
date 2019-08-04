@@ -80,7 +80,7 @@ bindsym $mod+q			[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 
 bindsym $mod+w			exec --no-startup-id $BROWSER
-bindsym $mod+Shift+w		exec $term -e nmtui
+bindsym $mod+Shift+w		exec --no-startup-id $BROWSER --private-window
 
 # bindsym $mod+e			exec $term -e neomutt && pkill -RTMIN+12 i3blocks
 bindsym $mod+e                  exec --no-startup-id zathura
