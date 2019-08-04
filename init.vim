@@ -1,18 +1,11 @@
 let mapleader = " "
 
 call plug#begin('~/.config/nvim/plugged')
-" Rust programming
-" Plug 'rust-lang/rust.vim'
-" Plug 'racer-rust/vim-racer'
-Plug 'w0rp/ale'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Programming
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 
-" fzf
+" Project navigation
 Plug 'airblade/vim-rooter'
 Plug '/urs/bin/fzf'
 Plug 'junegunn/fzf.vim'
@@ -21,14 +14,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align'
 Plug 'ap/vim-css-color'
-
-" Other
-" Plug 'mboughaba/i3config.vim'
-" Plug 'vimwiki/vimwiki'
 call plug#end()
 
 " set bg=light
@@ -51,15 +40,6 @@ set softtabstop=4
     set encoding=utf-8
     syntax on
 
-" Rust
-let g:rustfmt_autosave = 1
-let g:deoplete#enable_at_startup = 1
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'cpp': ['clangd'],
-    \ }
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-
 " Disables automatic commenting on newline:
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -77,10 +57,10 @@ nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 " Leader bindings
 nmap <leader>q :q<CR>
-" nmap <leader>q! :q!<CR>
 nmap <leader>w :w<CR>
-nmap <leader><leader> <c-^>
-" Open hotkeys
+nmap <leader><Tab> <c-^>
+nmap <leader>d :lcd %:p:h<CR>
+" Open fzf's modals
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
 
@@ -102,4 +82,3 @@ endfunction
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
   \                               'options': '--tiebreak=index'}, <bang>0)
-
