@@ -32,40 +32,38 @@ set shiftwidth=4
 set softtabstop=4
 
 " Some basics:
-    " color dracula
-    filetype plugin on
-    set hidden
-    set nocompatible
-    set number relativenumber
-    set encoding=utf-8
-    syntax on
+filetype plugin on
+set hidden
+set nocompatible
+set number relativenumber
+set encoding=utf-8
+syntax on
 
 " Disables automatic commenting on newline:
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-    set splitright splitbelow
+" Splits open at the bottom and right, which is non-retarded, unlike vim defaults
+set splitright splitbelow
 
-" Shortcutting split navigation, saving a keypress:
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+" Shortcutting split navigation, saving a keypress
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 
-" Automatically deletes all trailing whitespace on save.
-	autocmd BufWritePre * %s/\s\+$//e
+" Automatically deletes all trailing whitespaces on save
+autocmd BufWritePre * %s/\s\+$//e
 
 " Leader bindings
 nmap <leader>q :q<CR>
 nmap <leader>w :w<CR>
 nmap <leader><Tab> <c-^>
 nmap <leader>d :lcd %:p:h<CR>
+noremap <leader>s :Rg<space>
 " Open fzf's modals
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
 
-" <leader>s for Rg search
-noremap <leader>s :Rg<space>
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
@@ -74,6 +72,7 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+" requires proximity-sort to work, run: cargo install proximity-sort
 function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
   return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
