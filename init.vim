@@ -11,6 +11,7 @@ Plug '/urs/bin/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Editor enhancement
+Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
@@ -20,24 +21,23 @@ Plug 'junegunn/vim-easy-align'
 Plug 'ap/vim-css-color'
 call plug#end()
 
-" set bg=light
+" Some basics:
+colorscheme gruvbox
+set termguicolors
 set mouse=a
+set encoding=utf-8
+set hidden
+set number relativenumber
 set nohlsearch
 set clipboard=unnamedplus
 set backupcopy=yes
+filetype plugin on
+syntax on
 
 " indenting
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-
-" Some basics:
-filetype plugin on
-set hidden
-set nocompatible
-set number relativenumber
-set encoding=utf-8
-syntax on
 
 " Disables automatic commenting on newline:
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
