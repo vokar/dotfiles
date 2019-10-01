@@ -7,7 +7,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Project navigation
 Plug 'airblade/vim-rooter'
-Plug '/urs/bin/fzf'
+Plug '/bin/fzf'
 Plug 'junegunn/fzf.vim'
 
 " Editor enhancement
@@ -31,6 +31,8 @@ set number relativenumber
 set nohlsearch
 set clipboard=unnamedplus
 set backupcopy=yes
+set noshowmode
+set undofile
 filetype plugin on
 syntax on
 
