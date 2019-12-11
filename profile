@@ -1,46 +1,45 @@
 #!/bin/sh
 # Profile file. Runs on login.
 
-# Adds `~/.scripts` and all subdirectories to $PATH
-script_paths="$(du "$HOME/.scripts/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
-bin_paths="$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/.yarn/bin"
-export PATH="$bin_paths:$script_paths"
+# Adds `~/.local/bin` and all subdirectories to $PATH
+bin_sub_dirs="$(fd -t d . $HOME/.local/bin | tr '\n' ':' | sed 's/:*$//')"
+export PATH="$PATH:$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/.local/bin:$bin_sub_dirs"
+
+# Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
-export FILE="ranger"
-export BIB="$HOME/Documents/LaTeX/uni.bib"
-export REFER="$HOME/Documents/referbib"
-export SUDO_ASKPASS="$HOME/.scripts/tools/dmenupass"
+export FILE="lf"
+export STATUSBAR="${LARBSWM}blocks"
+
+# ~/ Clean-up:
 export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
-export PIX="$HOME/.config/pix/"
-export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+export LESSHISTFILE="-"
+export INPUTRC="$HOME/.config/inputrc"
+export ZDOTDIR="$HOME/.config/zsh"
+export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 
-# less/man colors
+# Other program settings:
+export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESS=-R
-LESS_TERMCAP_mb=$(printf '%b' '[1;31m')
-export LESS_TERMCAP_mb; a="${a%_}"
-LESS_TERMCAP_md=$(printf '%b' '[1;36m')
-export LESS_TERMCAP_md; a="${a%_}"
-LESS_TERMCAP_me=$(printf '%b' '[0m')
-export LESS_TERMCAP_me; a="${a%_}"
-LESS_TERMCAP_so=$(printf '%b' '[01;44;33m')
-export LESS_TERMCAP_so; a="${a%_}"
-LESS_TERMCAP_se=$(printf '%b' '[0m')
-export LESS_TERMCAP_se; a="${a%_}"
-LESS_TERMCAP_us=$(printf '%b' '[1;32m')
-export LESS_TERMCAP_us; a="${a%_}"
-LESS_TERMCAP_ue=$(printf '%b' '[0m')
-export LESS_TERMCAP_ue; a="${a%_}"
+export LESS_TERMCAP_mb="$(printf '%b' '')"
+export LESS_TERMCAP_md="$(printf '%b' '')"
+export LESS_TERMCAP_me="$(printf '%b' '')"
+export LESS_TERMCAP_so="$(printf '%b' '')"
+export LESS_TERMCAP_se="$(printf '%b' '')"
+export LESS_TERMCAP_us="$(printf '%b' '')"
+export LESS_TERMCAP_ue="$(printf '%b' '')"
+
+mpd >/dev/null 2>&1 &
 
 [ ! -f ~/.config/shortcutrc ] && shortcuts >/dev/null 2>&1
 
-echo "$0" | grep "bash$" >/dev/null && [ -f ~/.bashrc ] && . "$HOME/.bashrc"
+# Start graphical server on tty1 if not already running.
+[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
 
-# Start graphical server if i3 not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
-
-# Switch escape and caps if tty:
-sudo -n loadkeys ~/.scripts/ttymaps.kmap 2>/dev/null
+# Switch escape and caps if tty and no passwd required:
+sudo -n loadkeys ~/.local/share/larbs/ttymaps.kmap 2>/dev/null
