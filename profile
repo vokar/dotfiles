@@ -6,15 +6,17 @@ bin_sub_dirs="$(fd -t d . $HOME/.local/bin | tr '\n' ':' | sed 's/:*$//')"
 export PATH="$PATH:$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/.local/bin:$bin_sub_dirs"
 
 # Default programs:
-export EDITOR="nvim"
-export TERMINAL="st"
 export BROWSER="firefox"
-export READER="zathura"
+export EDITOR="nvim"
 export FILE="lf"
+export PAGER="less -R"
+export BAT_PAGER="$PAGER"
+export TERMINAL="st"
+export READER="zathura"
 export STATUSBAR="i3blocks"
 
 # ~/ Clean-up:
-export NOTMUCH_CONFIG="$HOME/.config/notmuch-config"
+export XAUTHORITY="$HOME/.config/Xauthority"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
 export INPUTRC="$HOME/.config/inputrc"
@@ -22,8 +24,10 @@ export ZDOTDIR="$HOME/.config/zsh"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 
 # Other program settings:
+export TERMINFO="$HOME/.config/terminfo"
 export LARBSWM="i3"
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse'
+export SKIM_DEFAULT_OPTIONS='--height 40% --layout=reverse'
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export FZF_DEFAULT_OPTS="--layout=reverse --height 40%"
 export LESS=-R

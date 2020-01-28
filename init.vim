@@ -7,18 +7,21 @@ Plug 'sheerun/vim-polyglot'
 
 " Project navigation
 Plug 'airblade/vim-rooter'
-Plug '/bin/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'lotabout/skim.vim'
 
 " Editor enhancement
 Plug 'morhetz/gruvbox'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'vim-airline/vim-airline'
-Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/vim-easy-align'
 Plug 'ap/vim-css-color'
+
+" xbps-install on Void Linux saves plugins there
+Plug '/usr/share/vim/vimfiles'
 call plug#end()
 
 " Some basics:
@@ -86,7 +89,7 @@ noremap <leader>s :Rg<space>
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
 
-let g:fzf_layout = { 'down': '~20%' }
+let g:skim_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
