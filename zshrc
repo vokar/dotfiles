@@ -2,6 +2,10 @@ autoload -U colors && colors
 NEWLINE=$'\n'
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%*%{$fg[red]%}] %{$fg[magenta]%}%~%b${NEWLINE}  %{$fg[magenta]%}λ%{$fg[red]%}:%{$reset_color%} "
 
+export HISTFILE="$HOME/.config/zsh/history"
+export SAVEHIST=300
+setopt SHARE_HISTORY             # Share history between all sessions.
+
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
@@ -14,12 +18,21 @@ compinit
 # Include hidden files in autocomplete:
 _comp_options+=(globdots)
 
+# Keybindings
+bindkey -v
+
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
 
 export KEYTIMEOUT=1
 
@@ -68,3 +81,5 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
