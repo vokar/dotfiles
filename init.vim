@@ -10,7 +10,7 @@ Plug 'airblade/vim-rooter'
 Plug 'lotabout/skim.vim'
 
 " Editor enhancement
-Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -25,7 +25,8 @@ Plug '/usr/share/vim/vimfiles'
 call plug#end()
 
 " Some basics:
-colorscheme gruvbox
+let g:gruvbox_transp_bg = 1
+colorscheme gruvbox8
 set termguicolors
 set mouse=a
 set encoding=utf-8
