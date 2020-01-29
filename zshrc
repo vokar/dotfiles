@@ -79,7 +79,10 @@ lfcd () {
 
 bindkey -s '^o' 'lfcd\n'  # zsh
 
+if [ "$(fd skim /usr/share/zsh/site-functions)" != "" ]; then
+    source /usr/share/zsh/site-functions/skim-completion.zsh
+    source /usr/share/zsh/site-functions/skim-key-bindings.zsh
+fi
+
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
