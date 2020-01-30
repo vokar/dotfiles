@@ -1,40 +1,42 @@
+# Runs on zsh startup.
+
+# Prompt
 autoload -U colors && colors
 NEWLINE=$'\n'
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%*%{$fg[red]%}] %{$fg[magenta]%}%~%b${NEWLINE}  %{$fg[magenta]%}λ%{$fg[red]%}:%{$reset_color%} "
 
-export HISTFILE="$HOME/.config/zsh/history"
-export SAVEHIST=300
-setopt SHARE_HISTORY             # Share history between all sessions.
+# History
+export HISTFILE="$ZDOTDIR/history"
+export HISTSIZE=300
+export SAVEHIST=$HISTSIZE
+setopt INC_APPEND_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 
-# Load aliases and shortcuts if existent.
-[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
-
+# Autocomplete
 autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
-
-# Include hidden files in autocomplete:
-_comp_options+=(globdots)
+_comp_options+=(globdots) # Include hidden files in autocomplete
 
 # Keybindings
 bindkey -v
-
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
-
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-
 export KEYTIMEOUT=1
+
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -76,9 +78,13 @@ lfcd () {
         fi
     fi
 }
-
 bindkey -s '^o' 'lfcd\n'  # zsh
 
+# Load aliases and shortcuts if existent.
+[ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
+[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
+
+# Load skim's files
 if [ "$(fd skim /usr/share/zsh/site-functions)" != "" ]; then
     source /usr/share/zsh/site-functions/skim-completion.zsh
     source /usr/share/zsh/site-functions/skim-key-bindings.zsh
