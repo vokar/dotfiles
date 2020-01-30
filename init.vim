@@ -81,11 +81,12 @@ map <C-l> <C-w>l
 autocmd BufWritePre * %s/\s\+$//e
 
 " Leader bindings
+noremap <leader>s :Rg<space>
+nmap <leader><Tab> <c-^>
 nmap <leader>q :q<CR>
 nmap <leader>w :w<CR>
-nmap <leader><Tab> <c-^>
+nmap <leader>g :G<CR>
 nmap <leader>d :lcd %:p:h<CR>
-noremap <leader>s :Rg<space>
 " Open fzf's modals
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
