@@ -1,0 +1,33 @@
+#!/bin/sh
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+  cp="cp -iv" \
+  mv="mv -iv" \
+  rm="rm -v" \
+  mkd="mkdir -pv" \
+  yt="youtube-dl --add-metadata -i" \
+  yta="yt -x -f bestaudio/best" \
+  ffmpeg="ffmpeg -hide_banner" \
+  man="man -T ascii -O width=$COLUMNS"
+
+# Colorize commands when possible.
+alias \
+  diff="diff --color=auto" \
+
+# These common commands are just too long! Abbreviate them.
+alias \
+  ka="killall" \
+  g="git" \
+  YT="youtube-viewer" \
+  xi="sudo xbps-install" \
+  xr="sudo xbps-remove -R" \
+  xq="xbps-query"
+
+# This alias is important. It enables the `pauseallmpv` command.
+alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
+
+# Some other stuff
+alias \
+  weath="less -S ~/.local/share/weatherreport" \
+  vim="nvim" vimdiff="nvim -d"
