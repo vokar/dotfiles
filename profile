@@ -38,6 +38,8 @@ export LESS_TERMCAP_se="$(printf '%b' '')"
 export LESS_TERMCAP_us="$(printf '%b' '')"
 export LESS_TERMCAP_ue="$(printf '%b' '')"
 
+mpd >/dev/null 2>&1 &
+
 # Start graphical server on tty1 if not already running.
 [ "$(tty)" = "/dev/tty1" ] && ! pgrep -x Xorg >/dev/null && exec startx
 
