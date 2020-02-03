@@ -12,14 +12,6 @@ block = "sound"
 step_width = 3
 
 [[block]]
-block = "battery"
-interval = 10
-format = "{percentage}% {time}"
-
-[[block]]
-block = "backlight"
-
-[[block]]
 block = "pomodoro"
 length = 25
 break_length = 5

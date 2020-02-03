@@ -31,9 +31,12 @@ for_window [instance="dropdown_dropdowncalc"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome5Free, FontAwesome5Brands 12
-    status_command i3status-rs ~/.config/i3/status
+    font pango:DejaVu Sans Mono for Powerline, FontAwesome 10
+    status_command i3status-rs ~/.config/i3/status.toml
     position top
+    mode dock
+    modifier None
+    height 19
 
     colors {
         background #282828
@@ -104,7 +107,7 @@ bindsym $mod+Shift+a		exec --no-startup-id ddspawn dropdowncalc -f mono:pixelsiz
 bindsym $mod+s			gaps inner current plus 5
 bindsym $mod+Shift+s		gaps inner current minus 5
 
-bindsym $mod+d			exec --no-startup-id dmenu_run
+bindsym $mod+d			exec --no-startup-id dmenu_run -fn "DejaVu Sans Mono-10"
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
 set $freeze Distraction-free mode (super+shift+f to reactivate bindings)
