@@ -1,0 +1,36 @@
+theme = "gruvbox-dark"
+icons = "awesome"
+
+[[block]]
+block = "music"
+player = "mpd"
+max_width = 35
+buttons = ["play"]
+
+[[block]]
+block = "sound"
+step_width = 3
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}% {time}"
+
+[[block]]
+block = "backlight"
+
+[[block]]
+block = "pomodoro"
+length = 25
+break_length = 5
+message = "Take a break!"
+break_message = "Back to work!"
+
+[[block]]
+block = "networkmanager"
+
+[[block]]
+block = "time"
+format = "%a %d/%m %R"
+timezone = "Europe/Moscow"
+interval = 60

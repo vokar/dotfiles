@@ -31,11 +31,20 @@ for_window [instance="dropdown_dropdowncalc"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
 bar {
-	font pango:mono 10
-	status_command i3blocks
-	position top
-	mode dock
-	modifier None
+    font pango:DejaVu Sans Mono, FontAwesome5Free, FontAwesome5Brands 12
+    status_command i3status-rs ~/.config/i3/status
+    position top
+
+    colors {
+        background #282828
+        separator #ffffff
+        statusline #ffffff
+
+        focused_workspace #ebdbb2 #ebdbb2 #282828
+        active_workspace #98971a #98971a #282828
+        inactive_workspace #2f343a #2f343a #ebdbb2
+        urgent_workspace #d79921 #d79921 #282828
+    }
 }
 
 # #---Basic Bindings---# #
