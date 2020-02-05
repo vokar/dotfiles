@@ -7,7 +7,7 @@ Plug 'sheerun/vim-polyglot'
 
 " Project navigation
 Plug 'airblade/vim-rooter'
-Plug 'lotabout/skim.vim'
+Plug 'junegunn/fzf.vim'
 
 " Editor enhancement
 Plug 'lifepillar/vim-gruvbox8'
@@ -20,7 +20,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'junegunn/vim-easy-align'
 Plug 'ap/vim-css-color'
 
-" xbps-install on Void Linux saves plugins there
+" xbps-install on Void Linux and pacman on Arch save plugins there
 Plug '/usr/share/vim/vimfiles'
 call plug#end()
 
@@ -91,7 +91,7 @@ nmap <leader>d :lcd %:p:h<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
 
-let g:skim_layout = { 'down': '~20%' }
+let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,

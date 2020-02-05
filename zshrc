@@ -84,10 +84,10 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
-# Load skim's files
-if [ "$(fd skim /usr/share/zsh/site-functions)" != "" ]; then
-    source /usr/share/zsh/site-functions/skim-completion.zsh
-    source /usr/share/zsh/site-functions/skim-key-bindings.zsh
+# Load fzf's files
+if [ "$(fd zsh /usr/share/doc/fzf)" != "" ]; then
+    source /usr/share/doc/fzf/completion.zsh
+    source /usr/share/doc/fzf/key-bindings.zsh
 fi
 
 # Load zsh-syntax-highlighting; should be last.
