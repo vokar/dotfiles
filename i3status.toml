@@ -1,10 +1,15 @@
-theme = "gruvbox-dark"
 icons = "awesome"
+
+[theme]
+name = "gruvbox-dark"
+
+[theme.overrides]
+separator = ""
 
 [[block]]
 block = "music"
 player = "mpd"
-max_width = 35
+max_width = 30
 buttons = ["play"]
 
 [[block]]
