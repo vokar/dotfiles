@@ -1,0 +1,13 @@
+#!/bin/sh
+
+alias \
+  cdf="cd ~/.dotfiles" \
+  cfa="$EDITOR ~/.dotfiles/aliasrc" \
+  cfsc="$EDITOR ~/.dotfiles/shortcutrc" \
+  cfp="$EDITOR ~/.dotfiles/profile" \
+  cfi="$EDITOR ~/.dotfiles/i3config" \
+  cfs="$EDITOR ~/.dotfiles/i3status.toml" \
+  cfv="$EDITOR ~/.dotfiles/init.vim" \
+  cfz="$EDITOR ~/.dotfiles/zshrc" \
+  cfu="$EDITOR ~/.config/newsboat/urls" \
+  cfn="$EDITOR ~/.config/newsboat/config"
