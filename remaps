@@ -1,13 +1,9 @@
 #!/bin/sh
-# This script is called by i3 on startup to remap keys.
+# This script is called by .xprofile on startup to remap keys.
+
 # Increase key speed via a rate change
 xset r rate 200 50
-# Map the caps lock key to super...
-# setxkbmap -option caps:super
-# Add english and russian layouts toggle, swap ctrl and caps
+# Add english and russian layouts, toggle it with super+space, swap ctrl and caps
 setxkbmap -layout us,ru -option grp:win_space_toggle,ctrl:swapcaps,altwin:swap_lalt_lwin
-# But when it is pressed only once, treat it as escape.
-xcape
-# killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape'
-# Map the menu button to right super as well.
-xmodmap -e 'keycode 135 = Super_R'
+# Handle a short press of ctrl as esc
+pkill xcape; xcape

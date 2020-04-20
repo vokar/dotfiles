@@ -4,10 +4,11 @@
 autoload -U colors && colors
 NEWLINE=$'\n'
 PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%*%{$fg[red]%}] %{$fg[magenta]%}%~%b${NEWLINE}  %{$fg[magenta]%}λ%{$fg[red]%}:%{$reset_color%} "
+stty stop undef	# Disable ctrl-s to freeze terminal.
 
 # History
 export HISTFILE="$ZDOTDIR/history"
-export HISTSIZE=300
+export HISTSIZE=1000
 export SAVEHIST=$HISTSIZE
 setopt INC_APPEND_HISTORY
 setopt HIST_FIND_NO_DUPS
@@ -24,6 +25,7 @@ _comp_options+=(globdots) # Include hidden files in autocomplete
 
 # Keybindings
 bindkey -v
+export KEYTIMEOUT=1
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^?' backward-delete-char
@@ -35,7 +37,6 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
-export KEYTIMEOUT=1
 
 
 # Change cursor shape for different vi modes.
@@ -65,7 +66,7 @@ echo -ne '\e[5 q'
 preexec() { echo -ne '\e[5 q' ;}
 
 # Use lf to switch directories and bind it to ctrl-o
-lfcd () {
+function lfcd () {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
     if [ -f "$tmp" ]; then
@@ -78,7 +79,13 @@ lfcd () {
         fi
     fi
 }
-bindkey -s '^o' 'lfcd\n'  # zsh
+bindkey -s '^o' 'lfcd\n'
+
+bindkey -s '^s' 'sudo !!\n'
+
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '^e' edit-command-line
 
 # Load aliases and shortcuts if existent.
 [ -f "$HOME/.config/shortcutrc" ] && source "$HOME/.config/shortcutrc"
@@ -91,4 +98,4 @@ if [ "$(fd zsh /usr/share/doc/fzf)" != "" ]; then
 fi
 
 # Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
