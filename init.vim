@@ -82,6 +82,7 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " Leader bindings
 noremap <leader>s :Rg<space>
+noremap <leader>m :Man<space>
 nmap <leader><Tab> <c-^>
 nmap <leader>q :q<CR>
 nmap <leader>w :w<CR>

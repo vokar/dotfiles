@@ -145,7 +145,7 @@ bindsym $mod+b			bar mode toggle
 bindsym $mod+Shift+b		floating toggle; sticky toggle; exec --no-startup-id hover left
 
 bindsym $mod+n			exec $term -e newsboat
-bindsym $mod+Shift+n		floating toggle; sticky toggle; exec --no-startup-id bottomright
+bindsym $mod+Shift+n		floating toggle; sticky toggle; exec --no-startup-id hover right
 
 bindsym $mod+m 			exec --no-startup-id $term -e ncmpcpp
 bindsym $mod+Shift+m		exec --no-startup-id pulsemixer --toggle-mute
@@ -277,15 +277,9 @@ bindsym Shift+XF86AudioRaiseVolume	exec --no-startup-id pulsemixer --change-volu
 bindsym Control+XF86AudioRaiseVolume	exec --no-startup-id pulsemixer --change-volume +1
 bindsym XF86AudioMicMute	exec pulsemixer --id source-1 --toggle-mute
 bindsym XF86PowerOff		exec --no-startup-id prompt "Shutdown computer?" "$shutdown"
-##bindsym XF86Copy		exec
-##bindsym XF86Open		exec
-##bindsym XF86Paste		exec
-##bindsym XF86Cut		exec
-##bindsym XF86MenuKB		exec
 bindsym XF86Calculator		exec $term -e R -q --no-save
 bindsym XF86Explorer		exec $term -e $FILE
 bindsym XF86WWW			exec --no-startup-id $BROWSER
-bindsym XF86ScreenSaver		exec exec --no-startup-id lockscreen
 bindsym XF86MyComputer		exec $term -e $FILE
 bindsym XF86Eject		exec --no-startup-id dmenuumount
 bindsym XF86AudioNext		exec --no-startup-id mpc next
@@ -311,5 +305,4 @@ bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight +5
 bindsym XF86AudioMedia		exec --no-startup-id $term -e ncmpcpp
 bindsym XF86Display		exec --no-startup-id displayselect
 bindsym XF86Documents		exec $term -e $FILE ~/Documents
-##bindsym XF86Bluetooth		exec
 bindsym XF86WLAN		exec $netrefresh
