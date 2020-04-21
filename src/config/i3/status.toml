@@ -17,11 +17,20 @@ block = "sound"
 step_width = 3
 
 [[block]]
-block = "pomodoro"
-length = 25
-break_length = 5
-message = "Take a break!"
-break_message = "Back to work!"
+block = "battery"
+interval = 10
+format = "{percentage}% {time}"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+
+# [[block]]
+# block = "pomodoro"
+# length = 25
+# break_length = 5
+# message = "Take a break!"
+# break_message = "Back to work!"
 
 [[block]]
 block = "networkmanager"
