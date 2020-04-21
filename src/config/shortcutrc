@@ -1,12 +1,15 @@
 #!/bin/sh
 
+DOTFILES_SRC="$DOTFILES/src"
+
 alias \
-  cddf="cd ~$DOTFILES" \
-  cfa="$EDITOR ~$DOTFILES/aliasrc" \
-  cfsc="$EDITOR ~$DOTFILES/shortcutrc" \
-  cfzp="$EDITOR ~$DOTFILES/profile" \
-  cfxp="$EDITOR ~$DOTFILES/xprofile" \
-  cfi="$EDITOR ~$DOTFILES/i3config" \
-  cfs="$EDITOR ~$DOTFILES/i3status.toml" \
-  cfv="$EDITOR ~$DOTFILES/init.vim" \
-  cfz="$EDITOR ~$DOTFILES/zshrc"
+  cddf="cd $DOTFILES" \
+  cddfs="cd $DOTFILES_SRC" \
+  cfxp="$EDITOR $DOTFILES_SRC/xprofile" \
+  cfzp="$EDITOR $DOTFILES_SRC/zprofile" \
+  cfa="$EDITOR $DOTFILES_SRC/config/aliasrc" \
+  cfsc="$EDITOR $DOTFILES_SRC/config/shortcutrc" \
+  cfi="$EDITOR $DOTFILES_SRC/config/i3/config" \
+  cfs="$EDITOR $DOTFILES_SRC/config/i3/status.toml" \
+  cfv="$EDITOR $DOTFILES_SRC/config/nvim/init.vim" \
+  cfz="$EDITOR $DOTFILES_SRC/config/zsh/zshrc"
