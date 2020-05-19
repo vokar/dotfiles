@@ -78,8 +78,10 @@ function lfcd () {
             fi
         fi
     fi
+    zle reset-prompt
 }
-bindkey -s '^o' 'lfcd\n'
+zle -N lfcd
+bindkey '^o' lfcd
 
 bindkey -s '^s' 'sudo !!\n'
 
