@@ -11,22 +11,29 @@ Plug 'junegunn/fzf.vim'
 
 " Editor enhancement
 Plug 'lifepillar/vim-gruvbox8'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-repeat'
 Plug 'vim-airline/vim-airline'
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/goyo.vim'
+Plug 'machakann/vim-highlightedyank'
+Plug 'justinmk/vim-sneak'
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'ap/vim-css-color'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'vimwiki/vimwiki'
 
 " xbps-install on Void Linux and pacman on Arch save plugins there
 Plug '/usr/share/vim/vimfiles'
 call plug#end()
 
-" Some basics:
-let g:gruvbox_transp_bg = 1
-colorscheme gruvbox8
+
+" Fix vim-airline in Goyo. See https://github.com/junegunn/goyo.vim/issues/198
+autocmd! User GoyoEnter nested set eventignore=FocusGained
+autocmd! User GoyoLeave nested set eventignore=
+
+" Some basics
 set termguicolors
 set mouse=a
 set encoding=utf-8
@@ -37,14 +44,27 @@ set clipboard=unnamedplus
 set backupcopy=yes
 set noshowmode
 set undofile
-filetype plugin on
-syntax on
+set splitright splitbelow
+let g:gruvbox_transp_bg = 1
+let g:sneak#label = 1
+colorscheme gruvbox8
+
+" indenting
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 " For coc.nvim
 set updatetime=300
 set cmdheight=2
 set shortmess+=c
 set signcolumn=yes
+
+" Automatically deletes all trailing whitespaces on save
+autocmd BufWritePre * %s/\s\+$//e
+" Disables automatic commenting on newline:
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -60,16 +80,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" indenting
-set expandtab
-set shiftwidth=4
-set softtabstop=4
-
-" Disables automatic commenting on newline:
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults
-set splitright splitbelow
 
 " Shortcutting split navigation, saving a keypress
 map <C-h> <C-w>h
@@ -77,17 +87,15 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-" Automatically deletes all trailing whitespaces on save
-autocmd BufWritePre * %s/\s\+$//e
-
 " Leader bindings
 noremap <leader>s :Rg<space>
 noremap <leader>m :Man<space>
 nmap <leader><Tab> <c-^>
-nmap <leader>q :q<CR>
-nmap <leader>w :w<CR>
-nmap <leader>g :G<CR>
+nmap <leader>e :e<CR>
+map <leader>o :setlocal spell! spelllang=en_us<CR>
+map <leader>p :Goyo \| set linebreak \| highlight StatusLineNC ctermfg=white<CR>
 nmap <leader>d :lcd %:p:h<CR>
+nmap <leader>g :G<CR>
 " Open fzf's modals
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
