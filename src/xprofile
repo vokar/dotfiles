@@ -6,3 +6,4 @@
 remaps & # run the remaps script, switching caps/esc and more; check it for more info
 dunst & # dunst for notifications
 unclutter & # hide the mouse cursor if it isn't being used
+mpd & # for music

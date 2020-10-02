@@ -9,10 +9,10 @@ export PATH="$PATH:$HOME/.cargo/bin:$HOME/.yarn/bin:$HOME/.local/bin:$bin_sub_di
 export BROWSER="firefox"
 export EDITOR="nvim"
 export FILE="lf"
-export PAGER="less -R"
+export PAGER="bat"
 export BAT_PAGER="less -Rs"
 export MANPAGER='nvim +Man!'
-export TERMINAL="st"
+export TERMINAL="alacritty"
 export READER="zathura"
 
 # Home dir clean-up
