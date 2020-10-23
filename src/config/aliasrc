@@ -6,10 +6,7 @@ alias \
   cp="cp -iv" \
   mv="mv -iv" \
   rm="rm -v" \
-  mkd="mkdir -pv" \
-  yt="youtube-dl --add-metadata -i" \
-  ytd="yt -x -f bestaudio/best" \
-  ffmpeg="ffmpeg -hide_banner"
+  mkd="mkdir -pv"
 
 # Colorize commands when possible.
 alias \
@@ -17,12 +14,9 @@ alias \
 
 # These common commands are just too long! Abbreviate them
 alias \
-  ytv="youtube-viewer" \
   xi="sudo xbps-install" \
-  xr="sudo xbps-remove" \
+  xr="sudo xbps-remove -R" \
   xq="xbps-query"
 
 # Some other stuff
-alias \
-  vim="nvim" \
-  vimdiff="nvim -d"
+alias vo="fd -t f | fzf | xargs vim"
