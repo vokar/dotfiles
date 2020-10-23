@@ -1,5 +1,11 @@
 let mapleader = " "
 
+if empty(glob('$XDG_CONFIG_HOME/nvim/autoload/plug.vim'))
+  silent !curl -fLo $XDG_CONFIG_HOME/nvim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync
+endif
+
 call plug#begin('~/.config/nvim/plugged')
 " Programming
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -111,7 +117,7 @@ command! -bang -nargs=* Rg
 " requires proximity-sort to work, run: cargo install proximity-sort
 function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
+  return base == '.' ? 'fd --hidden --type file --follow' : printf('fd --hidden --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
 command! -bang -nargs=? -complete=dir Files

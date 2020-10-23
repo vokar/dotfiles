@@ -1,7 +1,5 @@
 #!/bin/sh
 
-DOTFILES_SRC="$DOTFILES/src"
-
 alias \
   cddf="cd $DOTFILES" \
   cddfs="cd $DOTFILES_SRC" \
