@@ -1,12 +1,30 @@
 #!/bin/sh
-ln -sfrb profile ~/.profile
-ln -sfrb xprofile ~/.xprofile
-ln -sfrb inputrc ~/.config/.inputrc
-ln -sfrb aliasrc ~/.config/aliasrc
-ln -sfrb shortcutrc ~/.config/shortcutrc
-ln -sfrb i3config ~/.config/i3/config
-ln -sfrb i3status.toml ~/.config/i3/status.toml
-ln -sfrb init.vim ~/.config/nvim/init.vim
-ln -sfrb zshrc ~/.config/zsh/.zshrc
-ln -sfrb dunstrc ~/.config/dunst/dunstrc
-ln -sfrb remaps ~/.local/bin/remaps
+
+# Determine the right directory even if ran through symlink
+DOTFILES="$(dirname "$(readlink -f "$0")")"
+DOTFILES_SRC="$DOTFILES/src"
+CURRENT_DATE="$(date "+%Y_%m_%d-%H_%M_%S")"
+DOTFILES_BACKUP="$DOTFILES/backup/$CURRENT_DATE"
+BACKUP_SUFFIX=".dotfiles-$CURRENT_DATE"
+
+print_header() { printf "\n\033[1m%s\033[0m\n" "$*"; }
+
+print_header "Using $DOTFILES_SRC as the source directory containing the following:"
+cd "$DOTFILES_SRC" || exit
+exa -aT
+
+print_header "Creating necessary directories in $HOME"
+fd --hidden --type directory --exec-batch mkdir -pv "$HOME/{}"
+
+print_header "Creating symlinks and backing up existing files"
+fd --hidden --type file --exec ln -srbv -S "$BACKUP_SUFFIX" {} "$HOME/{}"
+
+print_header "Removing broken symlinks"
+fd --hidden --type symlink --exec-batch rm -v {} \; "$BACKUP_SUFFIX" "$HOME"
+
+print_header "Moving backups to the backup directory"
+mkdir -pv "$DOTFILES_BACKUP"
+fd --hidden --type file --exec-batch mv -v {} "$DOTFILES_BACKUP" \; "$BACKUP_SUFFIX" "$HOME"
+
+print_header "Removing backups' suffix"
+rename -v "$BACKUP_SUFFIX" '' "$DOTFILES_BACKUP"/*
