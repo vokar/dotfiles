@@ -7,31 +7,28 @@ if empty(glob('$XDG_CONFIG_HOME/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-" Programming
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
+  " Programming
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'sheerun/vim-polyglot'
 
-" Project navigation
-Plug 'airblade/vim-rooter'
-Plug 'junegunn/fzf.vim'
+  " Project navigation
+  Plug 'airblade/vim-rooter'
+  Plug 'junegunn/fzf.vim'
 
-" Editor enhancement
-Plug 'lifepillar/vim-gruvbox8'
-Plug 'vim-airline/vim-airline'
-Plug 'junegunn/goyo.vim'
-Plug 'machakann/vim-highlightedyank'
-Plug 'justinmk/vim-sneak'
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'ap/vim-css-color'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'vimwiki/vimwiki'
-
-" xbps-install on Void Linux and pacman on Arch save plugins there
-Plug '/usr/share/vim/vimfiles'
+  " Editor enhancement
+  Plug 'lifepillar/vim-gruvbox8'
+  Plug 'vim-airline/vim-airline'
+  Plug 'junegunn/goyo.vim'
+  Plug 'machakann/vim-highlightedyank'
+  Plug 'justinmk/vim-sneak'
+  Plug 'mhinz/vim-signify'
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'ap/vim-css-color'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+  Plug 'vimwiki/vimwiki'
 call plug#end()
 
 
@@ -86,7 +83,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-
 " Shortcutting split navigation, saving a keypress
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -117,7 +113,9 @@ command! -bang -nargs=* Rg
 " requires proximity-sort to work, run: cargo install proximity-sort
 function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'fd --hidden --type file --follow' : printf('fd --hidden --type file --follow | proximity-sort %s', expand('%'))
+  return base == '.'
+    \ ? 'fd --hidden --type file --follow'
+    \ : printf('fd --hidden --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
 command! -bang -nargs=? -complete=dir Files
