@@ -1,0 +1,9 @@
+# Configuration for starship, the minimal, blazing-fast, and infinitely customizable prompt for any shell
+# Check https://starship.rs/config for reference
+
+[time]
+disabled = false
+utc_time_offset = "+3"
+
+[aws]
+disabled = true
