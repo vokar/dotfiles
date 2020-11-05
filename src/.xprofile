@@ -1,7 +1,5 @@
-#!/usr/bin/env sh
-
-# This file runs when a DM logs you into a graphical session.
-# If you use startx/xinit like a Chad, this file will also be sourced.
+#!/bin/sh
+# This file is sourced by .xinitrc
 
 remaps & # run the remaps script, switching caps/esc and more; check it for more info
 dunst & # dunst for notifications

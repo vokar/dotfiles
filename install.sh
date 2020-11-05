@@ -27,4 +27,4 @@ mkdir -pv "$DOTFILES_BACKUP"
 fd --hidden --type file --exec-batch mv -v {} "$DOTFILES_BACKUP" \; "$BACKUP_SUFFIX" "$HOME"
 
 print_header "Removing backups' suffix"
-rename -v "$BACKUP_SUFFIX" '' "$DOTFILES_BACKUP"/*
+fd --hidden --type file --exec-batch rename -v "$BACKUP_SUFFIX" '' {} \; . "$DOTFILES_BACKUP"
