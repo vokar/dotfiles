@@ -43,6 +43,7 @@ bar {
 
 # Basic Bindings
 bindsym $mod+Return exec $term
+bindsym $mod+slash exec $term
 
 # Show selection:
 bindsym $mod+Insert exec --no-startup-id notify-send "📋 Clipboard contents:" "$(xsel -ob)"

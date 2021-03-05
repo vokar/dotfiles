@@ -8,7 +8,7 @@ stty stop undef	# Disable ctrl-s to freeze terminal.
 
 # History
 export HISTFILE="$ZDOTDIR/history"
-export HISTSIZE=1000
+export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 setopt INC_APPEND_HISTORY
 setopt HIST_FIND_NO_DUPS
