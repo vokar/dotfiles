@@ -28,3 +28,6 @@ fd --hidden --type file --exec-batch mv -v {} "$DOTFILES_BACKUP" \; "$BACKUP_SUF
 
 print_header "Removing backups' suffix"
 fd --hidden --type file --exec-batch rename -v "$BACKUP_SUFFIX" '' {} \; . "$DOTFILES_BACKUP"
+
+# Install packages
+# sudo xbps-install $(xsv select NAME packages.csv | tail -n +2 | tr '\n' ' ')
