@@ -6,6 +6,7 @@ alias \
   cfxp="$EDITOR $DOTFILES_SRC/.xprofile" \
   cfzp="$EDITOR $DOTFILES_SRC/.zprofile" \
   cfa="$EDITOR $DOTFILES_SRC/.config/aliasrc" \
+  cfat="$EDITOR $DOTFILES_SRC/.config/alacritty/alacritty.yml" \
   cfsc="$EDITOR $DOTFILES_SRC/.config/shortcutrc" \
   cfi="$EDITOR $DOTFILES_SRC/.config/i3/config" \
   cfs="$EDITOR $DOTFILES_SRC/.config/i3/status.toml" \

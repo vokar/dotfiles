@@ -67,6 +67,7 @@ bindsym $mod+Shift+u exec --no-startup-id i3resize down
 bindsym $mod+i exec $term -e htop
 bindsym $mod+Shift+i exec --no-startup-id i3resize up
 
+bindsym $mod+o exec --no-startup-id sleep 5; exec --no-startup-id xset dpms force off
 bindsym $mod+Shift+o exec --no-startup-id i3resize right
 
 bindsym $mod+p exec --no-startup-id mpc toggle
