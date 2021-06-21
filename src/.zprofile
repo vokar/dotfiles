@@ -5,7 +5,7 @@
 export BROWSER="firefox"
 export EDITOR="nvim"
 export FILE="lf"
-export PAGER="bat"
+export PAGER="bat --paging auto"
 export BAT_PAGER="less -Rs"
 export MANPAGER='nvim +Man!'
 export TERMINAL="alacritty"
