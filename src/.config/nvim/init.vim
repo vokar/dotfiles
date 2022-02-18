@@ -13,10 +13,13 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Project navigation
   Plug 'airblade/vim-rooter'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
 
   " Editor enhancement
+  " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'lifepillar/vim-gruvbox8'
+  Plug 'junegunn/rainbow_parentheses.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'junegunn/goyo.vim'
   Plug 'machakann/vim-highlightedyank'
@@ -27,7 +30,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'ap/vim-css-color'
-  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & npm install'  }
   Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -94,8 +97,9 @@ noremap <leader>s :Rg<space>
 noremap <leader>m :Man<space>
 nmap <leader><Tab> <c-^>
 nmap <leader>e :e<CR>
+nmap <leader>r <Plug>(coc-rename)
 map <leader>o :setlocal spell! spelllang=en_us<CR>
-map <leader>p :Goyo \| set linebreak \| highlight StatusLineNC ctermfg=white<CR>
+map <silent> <leader>p :Goyo \| set linebreak \| highlight StatusLineNC ctermfg=white<CR>
 nmap <leader>d :lcd %:p:h<CR>
 nmap <leader>g :G<CR>
 " Open fzf's modals
@@ -114,8 +118,8 @@ command! -bang -nargs=* Rg
 function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
   return base == '.'
-    \ ? 'fd --hidden --type file --follow'
-    \ : printf('fd --hidden --type file --follow | proximity-sort %s', expand('%'))
+    \ ? 'fd --hidden -E .git --type file --follow'
+    \ : printf('fd --hidden -E .git --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
 command! -bang -nargs=? -complete=dir Files

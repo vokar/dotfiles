@@ -3,4 +3,4 @@
 
 . ~/.xprofile
 
-exec i3
+# exec i3

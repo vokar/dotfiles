@@ -6,6 +6,8 @@ map d scroll half-down
 map D toggle_page_mode
 map r reload
 map R rotate
+map <C-k> navigate previous
+map <C-j> navigate next
 map K zoom in
 map J zoom out
 map i recolor

@@ -19,4 +19,5 @@ alias \
   xq="xbps-query"
 
 # Some other stuff
-alias vo="fd -t f | fzf | xargs vim"
+alias vim="nvim" \
+  vo="fd -t f | fzf | xargs vim"

@@ -94,11 +94,11 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 # Load fzf's files
-if [ "$(fd zsh /usr/share/doc/fzf)" != "" ]; then
-    source /usr/share/doc/fzf/completion.zsh
-    source /usr/share/doc/fzf/key-bindings.zsh
+if [ "$(fdfind zsh /usr/share/doc/fzf)" != "" ]; then
+    source /usr/share/doc/fzf/examples/completion.zsh
+    source /usr/share/doc/fzf/examples/key-bindings.zsh
 fi
 
 eval "$(starship init zsh)"
 # Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

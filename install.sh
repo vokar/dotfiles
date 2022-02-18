@@ -11,23 +11,24 @@ print_header() { printf "\n\033[1m%s\033[0m\n" "$*"; }
 
 print_header "Using $DOTFILES_SRC as the source directory containing the following:"
 cd "$DOTFILES_SRC" || exit
-exa -aT
+// exa -aT
+tree -a
 
 print_header "Creating necessary directories in $HOME"
-fd --hidden --type directory --exec-batch mkdir -pv "$HOME/{}"
+fdfind --hidden --type directory --exec-batch mkdir -pv "$HOME/{}"
 
 print_header "Creating symlinks and backing up existing files"
-fd --hidden --type file --exec ln -srbv -S "$BACKUP_SUFFIX" {} "$HOME/{}"
+fdfind --hidden --type file --exec ln -srbv -S "$BACKUP_SUFFIX" {} "$HOME/{}"
 
 print_header "Removing broken symlinks"
-fd --hidden --type symlink --exec-batch rm -v {} \; "$BACKUP_SUFFIX" "$HOME"
+fdfind --hidden --type symlink --exec-batch rm -v {} \; "$BACKUP_SUFFIX" "$HOME"
 
 print_header "Moving backups to the backup directory"
 mkdir -pv "$DOTFILES_BACKUP"
-fd --hidden --type file --exec-batch mv -v {} "$DOTFILES_BACKUP" \; "$BACKUP_SUFFIX" "$HOME"
+fdfind --hidden --type file --exec-batch mv -v {} "$DOTFILES_BACKUP" \; "$BACKUP_SUFFIX" "$HOME"
 
 print_header "Removing backups' suffix"
-fd --hidden --type file --exec-batch rename -v "$BACKUP_SUFFIX" '' {} \; . "$DOTFILES_BACKUP"
+fdfind --hidden --type file --exec-batch rename -v "$BACKUP_SUFFIX" '' {} \; . "$DOTFILES_BACKUP"
 
 # Install packages
 # sudo xbps-install $(xsv select NAME packages.csv | tail -n +2 | tr '\n' ' ')

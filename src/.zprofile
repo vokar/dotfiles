@@ -1,15 +1,20 @@
 #!/bin/sh
 # Profile file. Runs on login.
 
+# export SHELL=/usr/bin/zsh
+# export ZDOTDIR=/home/universe.dart.spb/vkaramyshev/.config/zsh
+
 # Default programs
 export BROWSER="firefox"
 export EDITOR="nvim"
 export FILE="lf"
-export PAGER="bat --paging auto"
+# export PAGER="bat --paging auto"
+export PAGER="bat"
 export BAT_PAGER="less -Rs"
 export MANPAGER='nvim +Man!'
 export TERMINAL="alacritty"
 export READER="zathura"
+# export SHELL="zsh"
 
 # Home dir clean-up
 export XDG_DATA_HOME="$HOME/.local/share"
@@ -36,8 +41,8 @@ export PATH="$CARGO_HOME/bin:$HOME/.local/bin:$PATH"
 
 # Start graphical server on tty1 if not already running;
 # otherwise switch escape and caps for comfortable work in tty
-if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -x Xorg)" ]; then
-    exec startx
-else
-    sudo -n loadkeys ~/.local/share/ttymaps.kmap
-fi
+#if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -x Xorg)" ]; then
+#    exec startx
+#else
+#    sudo -n loadkeys ~/.local/share/ttymaps.kmap
+#fi
