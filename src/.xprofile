@@ -2,8 +2,8 @@
 # This file is sourced by .xinitrc
 
 remaps & # run the remaps script, switching caps/esc and more; check it for more info
-picom -b &
-feh --no-fehbg --bg-scale ~/.config/wallpaper
+picom -b --vsync &
+feh --no-fehbg --bg-fill ~/.config/wallpaper
 dunst & # dunst for notifications
 unclutter & # hide the mouse cursor if it isn't being used
 mpd & # for music

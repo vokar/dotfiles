@@ -1,4 +1,6 @@
-icons = "awesome"
+
+
+icons = "awesome6"
 
 [theme]
 name = "gruvbox-dark"
@@ -7,10 +9,11 @@ name = "gruvbox-dark"
 separator = ""
 
 [[block]]
-block = "music"
-player = "mpd"
-max_width = 30
-buttons = ["play"]
+block = "keyboard_layout"
+driver = "xkbswitch"
+on_click = "xkb-switch -n"
+# format = "{layout} {variant}"
+interval = 1
 
 [[block]]
 block = "sound"

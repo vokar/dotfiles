@@ -81,4 +81,6 @@ else
         "multi-monitor") multimon ;;
         *) onescreen "$chosen" ;;
     esac
+
+    feh --no-fehbg --bg-fill ~/.config/wallpaper
 fi

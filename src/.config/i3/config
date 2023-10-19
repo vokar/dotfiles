@@ -49,6 +49,7 @@ bindsym $mod+slash exec $term
 bindsym $mod+Insert exec --no-startup-id notify-send "📋 Clipboard contents:" "$(xsel -ob)"
 
 bindsym $mod+q [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+bindsym $mod+Shift+e exit
 
 bindsym $mod+w exec --no-startup-id $BROWSER
 bindsym $mod+Shift+w exec --no-startup-id $BROWSER --private-window

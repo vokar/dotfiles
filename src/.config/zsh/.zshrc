@@ -94,9 +94,9 @@ bindkey '^e' edit-command-line
 [ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 # Load fzf's files
-if [ "$(fd zsh /usr/share/doc/fzf)" != "" ]; then
-    source /usr/share/doc/fzf/completion.zsh
-    source /usr/share/doc/fzf/key-bindings.zsh
+if [ "$(fd zsh /usr/share/fzf)" != "" ]; then
+    source /usr/share/fzf/completion.zsh
+    source /usr/share/fzf/key-bindings.zsh
 fi
 
 eval "$(starship init zsh)"

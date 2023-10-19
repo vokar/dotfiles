@@ -115,7 +115,7 @@ function! s:list_cmd()
   let base = fnamemodify(expand('%'), ':h:.:S')
   return base == '.'
     \ ? 'fd --hidden --type file --follow'
-    \ : printf('fd --hidden --type file --follow | proximity-sort %s', expand('%'))
+    \ : printf('fd --hidden --type file --follow | proximity-sort %s', shellescape(expand('%')))
 endfunction
 
 command! -bang -nargs=? -complete=dir Files
