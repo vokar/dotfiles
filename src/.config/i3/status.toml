@@ -1,45 +1,39 @@
-
-
+[icons]
 icons = "awesome6"
 
 [theme]
-name = "gruvbox-dark"
-
+theme = "gruvbox-dark"
 [theme.overrides]
 separator = ""
 
 [[block]]
-block = "keyboard_layout"
-driver = "xkbswitch"
-on_click = "xkb-switch -n"
-# format = "{layout} {variant}"
-interval = 1
+block = "pomodoro"
 
 [[block]]
 block = "sound"
-step_width = 3
+[[block.click]]
+button = "left"
+cmd = "pavucontrol"
+
+[[block]]
+block = "temperature"
+
+[[block]]
+block = "weather"
+autolocate = true
+autolocate_interval = "once"
+[block.service]
+name = "metno"
+
+[[block]]
+block = "net"
+format = " $icon  $ssid $signal_strength $ip "
+format_alt = " $icon ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K) "
 
 [[block]]
 block = "battery"
-interval = 10
-format = "{percentage}% {time}"
-
-[[block]]
-block = "backlight"
-device = "intel_backlight"
-
-# [[block]]
-# block = "pomodoro"
-# length = 25
-# break_length = 5
-# message = "Take a break!"
-# break_message = "Back to work!"
-
-[[block]]
-block = "networkmanager"
+format = " $icon $percentage $time $power "
 
 [[block]]
 block = "time"
-format = "%a %d/%m %R"
-timezone = "Europe/Moscow"
-interval = 60
+format = " $icon $timestamp.datetime(f:'%a %d/%m %R') "
