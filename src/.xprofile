@@ -2,7 +2,7 @@
 # This file is sourced by .xinitrc
 
 remaps & # run the remaps script, switching caps/esc and more; check it for more info
-picom -b --vsync &
+picom -b --vsync --backend glx &
 feh --no-fehbg --bg-fill ~/.config/wallpaper
 dunst & # dunst for notifications
 unclutter & # hide the mouse cursor if it isn't being used
